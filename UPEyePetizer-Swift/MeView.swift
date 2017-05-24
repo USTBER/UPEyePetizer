@@ -10,12 +10,36 @@ import UIKit
 
 class MeView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var logAndColAndComBtnClick:(()->())?
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        self.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: 194)
     }
-    */
+    
+    @IBAction func loginBtnClick() {
+        
+        logAndColAndComBtnClick?()
+    }
+    
+    
+    @IBAction func commentBtnClick() {
+        
+        logAndColAndComBtnClick?()
+    }
+    
+    @IBAction func CollectBtnClick() {
+        
+        logAndColAndComBtnClick?()
+    }
+    
+}
 
+extension MeView{
+    
+    class func loadMeView() -> MeView {
+        
+        return Bundle.main.loadNibNamed("MeView", owner: nil, options: nil)?.first as! MeView
+    }
 }

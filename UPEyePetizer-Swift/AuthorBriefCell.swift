@@ -10,15 +10,38 @@ import UIKit
 
 class AuthorBriefCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    lazy var normalView: NormalScrollView = NormalScrollView()
+    
+    
+    var authorBriefDataModel: AttDataModel? {
+        
+        didSet{
+            
+            guard let authorBriefDataModel = authorBriefDataModel,
+                  let authorBriefItemArr = authorBriefDataModel.itemList else {
+                    
+                    return
+            }
+            
+            normalView.addScrollImg(colItemArr: authorBriefItemArr)            
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(normalView)
+        
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        normalView.frame = contentView.bounds
+    }
+    
 }

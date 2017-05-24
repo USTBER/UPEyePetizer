@@ -9,11 +9,32 @@
 import UIKit
 
 
-class videoColView: UIView {
+class VideoColView: UIView {
 
     lazy var colImgView: UIImageView = UIImageView()
     lazy var colTitleLab: UILabel = UILabel()
     lazy var colCategoryTimeLab: UILabel = UILabel()
+    
+    var videoDataModel: VideoDataModel?{
+        
+        didSet{
+            
+            guard let model = videoDataModel,
+                  let title = model.title,
+                  let category = model.category,
+                  let showImgUrl = model.cover?["detail"] as? String else {
+                    
+                    return
+            }
+            
+            
+            colImgView.sd_setImage(with: URL(string: showImgUrl), placeholderImage: nil)
+            colTitleLab.text = title
+            colCategoryTimeLab.text = String().categoryAndTime(category: category, duration: model.duration)
+        }
+
+    }
+    
     
     override init(frame: CGRect) {
         
@@ -26,16 +47,18 @@ class videoColView: UIView {
     }
     
     override func layoutSubviews() {
+        
         super.layoutSubviews()
         
-        colImgView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * (4 / 5), height: heightFromWidth(width: UIScreen.main.bounds.width * (4 / 5)))
-        colTitleLab.frame = CGRect(x: 0, y: colImgView.frame.maxY, width: colImgView.bounds.width, height: (bounds.height - colImgView.bounds.height) / 2)
-        colCategoryTimeLab.frame = CGRect(x: 0, y: colTitleLab.frame.maxY, width: colImgView.bounds.width, height: (bounds.height - colImgView.bounds.height) / 2 - margin)
+        colImgView.frame = CGRect(x: insetMargin, y: 0, width: vColViewW, height: heightFromWidth(width: vColViewW))
+        
+        colTitleLab.frame = CGRect(x: insetMargin, y: colImgView.bounds.height, width: colImgView.bounds.width, height: (bounds.height - colImgView.bounds.height) / 2 - 5)
+        colCategoryTimeLab.frame = CGRect(x: insetMargin, y: colTitleLab.frame.maxY, width: colImgView.bounds.width, height: (bounds.height - colImgView.bounds.height) / 2 - 5)
     }
 
 }
 
-extension videoColView{
+extension VideoColView{
     
     func setUpUI() -> () {
         
@@ -50,6 +73,7 @@ extension videoColView{
         addSubview(colImgView)
         addSubview(colTitleLab)
         addSubview(colCategoryTimeLab)
+        
     }
 }
 

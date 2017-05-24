@@ -10,13 +10,33 @@
 import UIKit
 
 class AuthorHeaderView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    
+    var iconView: UIImageView = UIImageView()
+    var iconUrl: String?{
+        
+        didSet{
+            
+            guard let urlStr = iconUrl else {
+                
+                return
+            }
+            
+            iconView.up_setWebImage(urlString: urlStr, placeholderImage: nil)
+        }
     }
-    */
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.white
+        
+        iconView.frame = CGRect(x: (bounds.size.width - 100) / 2, y: (bounds.size.height - 100) / 2, width: 100, height: 100)
+        addSubview(iconView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 }

@@ -1,16 +1,76 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WelcomeView" customModule="UPEyePetizer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_explore_card_share_960x1239_@1x" translatesAutoresizingMaskIntoConstraints="NO" id="dz2-94-Kvu">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-ed-Olw">
+                    <rect key="frame" x="10" y="114" width="300" height="340"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="word_logo_150x56_" translatesAutoresizingMaskIntoConstraints="NO" id="J71-k5-aul">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="112"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="112" id="sHJ-fF-22Q"/>
+                                <constraint firstAttribute="width" constant="300" id="z48-cC-6gU"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ICON_EYE_white_70x47_" translatesAutoresizingMaskIntoConstraints="NO" id="awj-gA-I6P">
+                            <rect key="frame" x="100" y="139" width="100" height="62"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开   眼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zid-iq-JjN">
+                            <rect key="frame" x="0.0" y="262" width="300" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="5h2-Jj-qzW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="J71-k5-aul" secondAttribute="trailing" id="6W7-ZZ-UKy"/>
+                        <constraint firstItem="zid-iq-JjN" firstAttribute="leading" secondItem="fBV-ed-Olw" secondAttribute="leading" id="6gz-gC-BtN"/>
+                        <constraint firstAttribute="height" constant="340" id="BDY-zo-R1Y"/>
+                        <constraint firstItem="J71-k5-aul" firstAttribute="leading" secondItem="fBV-ed-Olw" secondAttribute="leading" id="LRe-8d-KGA"/>
+                        <constraint firstAttribute="trailing" secondItem="zid-iq-JjN" secondAttribute="trailing" id="QJ9-Pd-6po"/>
+                        <constraint firstAttribute="width" constant="300" id="QNB-Dq-Xi0"/>
+                        <constraint firstItem="J71-k5-aul" firstAttribute="top" secondItem="fBV-ed-Olw" secondAttribute="top" id="nRj-X1-32R"/>
+                        <constraint firstAttribute="bottom" secondItem="zid-iq-JjN" secondAttribute="bottom" constant="54" id="yIV-hI-n07"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dz2-94-Kvu" secondAttribute="trailing" id="4SO-zS-nsV"/>
+                <constraint firstItem="dz2-94-Kvu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UtD-9o-z7V"/>
+                <constraint firstAttribute="bottom" secondItem="dz2-94-Kvu" secondAttribute="bottom" id="WL9-rb-fcY"/>
+                <constraint firstItem="dz2-94-Kvu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bov-TT-YSl"/>
+                <constraint firstItem="fBV-ed-Olw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ecF-ss-Iqs"/>
+                <constraint firstItem="fBV-ed-Olw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="irv-WY-LdP"/>
+            </constraints>
+            <connections>
+                <outlet property="welView" destination="dz2-94-Kvu" id="7EL-DX-h8z"/>
+            </connections>
         </view>
     </objects>
+    <resources>
+        <image name="ICON_EYE_white_70x47_" width="70" height="47"/>
+        <image name="background_explore_card_share_960x1239_@1x" width="960" height="1239"/>
+        <image name="word_logo_150x56_" width="150" height="56"/>
+    </resources>
 </document>

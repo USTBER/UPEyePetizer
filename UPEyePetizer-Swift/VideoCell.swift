@@ -10,15 +10,32 @@ import UIKit
 
 class VideoCell: UITableViewCell {
 
+    @IBOutlet weak var backImgView: UIImageView!
+    @IBOutlet weak var titleLab: UILabel!
+    @IBOutlet weak var categoryTimeLab: UILabel!
+    
+    var videoModel:VideoDataModel?{
+        
+        didSet{
+            
+            guard let vModel = videoModel,
+                  let title = vModel.title,
+                  let category = vModel.category,
+                  let showImgUrl = vModel.cover?["detail"] as? String else {
+                
+                return
+            }
+            
+            backImgView.up_setWebImage(urlString: showImgUrl, placeholderImage: nil)
+            titleLab.text = title
+            categoryTimeLab.text = String().categoryAndTime(category: category, duration: vModel.duration)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        selectionStyle = .none
     }
     
 }

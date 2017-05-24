@@ -9,13 +9,29 @@
 import UIKit
 
 class EndView: UIView {
+    
+    @IBOutlet weak var endLab: UILabel!
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backgroundColor = UIColor.darkGray
+        
+        endLab.text = "- The End -"
+        endLab.font = UIFont.init(name: "Lobster 1.4", size: 16)
     }
-    */
+    
 
 }
+
+extension EndView{
+    
+    class func loadEndView(frame: CGRect) -> EndView {
+        
+        let endView = Bundle.main.loadNibNamed("EndView", owner: nil, options: nil)?.first as! EndView
+        endView.frame = frame
+        
+        return endView
+    }
+}
+

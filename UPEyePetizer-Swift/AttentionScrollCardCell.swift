@@ -9,16 +9,47 @@
 import UIKit
 
 class AttentionScrollCardCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    lazy var attScrollCardBarView: AttScrollCardBarView = AttScrollCardBarView.loadAttScrollCardBarView()
+    lazy var pageScrollView: PageScrollView = PageScrollView()
+    
+    var outerMargin: CGFloat = 5
+    
+    var attScrollCardDataModel: AttDataModel?{
+        
+        didSet{
+            
+            guard let scrollCardModel = attScrollCardDataModel,
+                  let acrollCardItemArr = scrollCardModel.itemList else {
+                    
+                    return
+            }
+            
+            attScrollCardBarView.headerModel = scrollCardModel.header
+            pageScrollView.addScrollImg(colItemArr: acrollCardItemArr)
+            
+        }
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        contentView.backgroundColor = UIColor.gray
+        contentView.addSubview(attScrollCardBarView)
+        contentView.addSubview(pageScrollView)
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        attScrollCardBarView.frame = CGRect(x: 0, y:outerMargin, width: contentView.bounds.width, height: briedAndScrollCardBarH)
+        pageScrollView.frame = CGRect(x: 0, y: attScrollCardBarView.frame.maxY, width: contentView.bounds.width, height: contentView.bounds.height - briedAndScrollCardBarH - outerMargin * 2)
+    }
 }

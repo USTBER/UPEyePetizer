@@ -10,15 +10,30 @@ import UIKit
 
 class AuthorBriefCardCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    lazy var attBriefBarView: AttBriefBarView = AttBriefBarView.loadAttBriefBarView()
+    
+    var authorBriefData: [String: Any]?{
+        
+        didSet{
+            
+            attBriefBarView.headerModel = authorBriefData
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(attBriefBarView)
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        attBriefBarView.frame = contentView.bounds
+        
+    }
 }
